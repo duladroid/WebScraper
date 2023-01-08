@@ -6,25 +6,27 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class WebScraper {
-    public static void main(String[] args) {
 
+    public WebScraper(){
         String html = "https://en.wikipedia.org/wiki/Dog";
+
         try {
             Document doc = Jsoup.connect(html).get();
             String title = doc.title();
             System.out.println(title);
             // System.out.println(doc); // entire HTML
 
-    /*
-    * Content we can 'get'
-    * The more 'general' ones:
-    * -> Tags (the things just inside the < > , such as <p> or <li>
-    * -> Attributes (special words that customize tags, such as "height", "color", "center"); not very helpful at the moment
-    * The more specific ones - better for our purposes here!
-    * -> Classes (organize content into major sections ... looks like <tag class = "className">
-    * -> ID's (unique labels for sections of the HTML document ... looks like <tage id="IDName"> ** the only option to get a single result**
-    *
-    * */
+
+            /* * Content we can 'get'
+             * The more 'general' ones:
+             * -> Tags (the things just inside the < > , such as <p> or <li>
+             * -> Attributes (special words that customize tags, such as "height", "color", "center"); not very helpful at the moment
+             * The more specific ones - better for our purposes here!
+             * -> Classes (organize content into major sections ... looks like <tag class = "className">
+             * -> ID's (unique labels for sections of the HTML document ... looks like <tage id="IDName"> ** the only option to get a single result**
+             *
+             * */
+
             // Get content by tag
             Elements paragraphs = doc.getElementsByTag("p");
             for(Element element: paragraphs){
@@ -66,4 +68,5 @@ public class WebScraper {
         }
 
     }
+
 }
